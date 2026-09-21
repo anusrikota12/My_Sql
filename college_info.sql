@@ -60,3 +60,8 @@ DESC students;
 ALTER TABLE students
 RENAME COLUMN phone_number TO phone_no;
 DESC students;
+
+
+ALTER TABLE students
+DROP COLUMN father_phno;
+DESC students;
