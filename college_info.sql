@@ -42,6 +42,8 @@ VALUES
 
 SELECT * FROM students;
 
+
+
 alter table students add phone_number int(100);
 
 alter table students add father_phno int(100), 
@@ -49,3 +51,12 @@ add address varchar(200);
 
 SELECT * FROM students;
 
+ALTER TABLE students
+MODIFY age DECIMAL(12,2);
+
+DESC students;
+
+
+ALTER TABLE students
+RENAME COLUMN phone_number TO phone_no;
+DESC students;
