@@ -18,7 +18,7 @@ VALUES (1, 'Computer Science');
 INSERT INTO departments
 VALUES (2, 'Mechanical');
 
-query:- SELECT * FROM departments;
+SELECT * FROM departments;
 
 CREATE TABLE employees (
     employee_id INT PRIMARY KEY,
@@ -38,7 +38,6 @@ CREATE TABLE employees (
 );
 
 
-query:- 
 INSERT INTO employees
 (employee_id, name, email, salary, department_id)
 VALUES
