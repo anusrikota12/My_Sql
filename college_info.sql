@@ -41,3 +41,11 @@ VALUES
 (101, 'Anu', 'anu@gmail.com', 20, 1);
 
 SELECT * FROM students;
+
+alter table students add phone_number int(100);
+
+alter table students add father_phno int(100), 
+add address varchar(200);
+
+SELECT * FROM students;
+
