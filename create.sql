@@ -1,6 +1,7 @@
 1. creating a databse:-
 
-query:- REATE DATABASE company_db;
+query:-
+CREATE DATABASE company_db;
 
 
 
