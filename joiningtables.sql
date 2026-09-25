@@ -163,10 +163,10 @@ WHERE project_name='Banking Application';
 
 Create view employee_department_view AS
 SELECT
-	e.employee_id,
+    e.employee_id,
     e.employee_name,
     e.salary,
-	d.department_name,
+    d.department_name,
     d.location
 FROM employees e
 JOIN departments d
@@ -178,17 +178,67 @@ from employee_department_view;
 
 CREATE VIEW high_salary_employees as
 select
-	employee_id,
+    employee_id,
     employee_name,
     salary
 from employees
 where salary>60000;
 
+
 SELECT UPPER(employee_name)
 FROM employees;
+
 
 SELECT LOWER(employee_name)
 FROM employees;
 
+
 SELECT employee_name, LENGTH(employee_name) AS name_length
 FROM employees;
+
+
+SELECT COUNT(*) AS total_employees
+FROM employees;
+
+SELECT SUM(salary) AS total_salary
+FROM employees;
+
+SELECT AVG(salary) AS average_salary
+FROM employees;
+
+SELECT MAX(salary) AS highest_salary
+FROM employees;
+
+SELECT MIN(salary) AS lowest_salary
+FROM employees;
+
+
+
+SELECT ROUND(AVG(salary),2) AS average_salary
+FROM employees;
+
+
+
+CREATE VIEW employee_details AS 
+SELECT
+    e.employee_id,
+    e.employee_name,
+    e.email,
+    e.salary,
+    d.department_name
+FROM employees e
+JOIN departments d
+ON e.department_id=d.department_id;
+
+
+CREATE VIEW it_employees AS 
+SELECT
+    e.employee_id,
+    e.employee_name,
+    e.email,
+    e.salary,
+    d.department_name
+FROM employees e
+JOIN departments d
+ON e.department_id=d.department_id
+WHERE d.department_name='IT';
