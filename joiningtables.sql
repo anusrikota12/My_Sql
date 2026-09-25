@@ -61,3 +61,53 @@ VALUES
 (5, 2, '2024-03-10'),
 (3, 3, '2024-05-05'),
 (4, 3, '2024-05-10');
+
+
+
+USE company_db2;
+SELECT e.employee_name, d.department_name 
+FROM employees e 
+INNER JOIN departments d 
+ON e.department_id=d.department_id;
+
+
+
+
+USE company_db2;
+SELECT e.employee_name, d.department_name 
+FROM employees e
+LEFT JOIN departments d
+ON e.department_id=d.department_id;
+
+
+
+SELECT e.employee_name AS employee,
+m.employee_name As manager
+FROM employees e
+LEFT JOIN employees m
+ON e.manager_id=m.employee_id;
+
+
+
+SELECT e.employee_name,p.project_name 
+FROM employees e
+CROSS JOIN projects p;
+
+SELECT e.employee_name, d.department_name, p.project_name
+FROM employees e
+INNER JOIN departments d
+ON e.department_id=d.department_id
+INNER JOIN employee_projects ep
+ON e.employee_id=ep.employee_id
+INNER JOIN projects p
+ON ep.project_id=p.project_id;
+
+
+SELECT e.employee_name,p.project_name,p.budget
+FROM employees e
+JOIN employee_projects ep
+ON e.employee_id=ep.employee_id
+JOIN projects p
+ON ep.project_id=p.project_id
+WHERE p.budget>400000;
+
