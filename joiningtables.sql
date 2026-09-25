@@ -25,7 +25,7 @@ CREATE TABLE projects(
 CREATE TABLE employee_projects(
     employee_id INT,
     project_id INT,
-    assigned DATE,
+    assigned_date DATE,
     PRIMARY KEY(employee_id,project_id),
     FOREIGN KEY (employee_id) REFERENCES employees(employee_id),
     FOREIGN KEY (project_id) REFERENCES projects(project_id)
@@ -110,4 +110,32 @@ ON e.employee_id=ep.employee_id
 JOIN projects p
 ON ep.project_id=p.project_id
 WHERE p.budget>400000;
+
+
+SELECT e.employee_name,d.department_name
+FROM employees e
+JOIN departments d
+ON e.department_id=d.department_id;
+
+
+SELECT e.employee_name, e.salary, d.department_name
+FROM employees e
+JOIN departments d
+ON e.department_id=d.department_id;
+
+SELECT e.employee_name, d.department_name
+FROM employees e
+JOIN departments d
+WHERE department_name='IT';
+
+
+
+SELECT e.employee_name,
+p.project_name,
+ep.assigned_date
+FROM employees e
+JOIN employee_projects ep
+ON e.employee_id=ep.employee_id
+JOIN projects p
+ON ep.project_id=p.project_id;
 
