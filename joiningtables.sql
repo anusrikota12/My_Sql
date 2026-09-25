@@ -1,0 +1,63 @@
+CREATE DATABASE company_db1;
+USE company_db1;
+CREATE TABLE departments(
+    department_id INT PRIMARY KEY AUTO_INCREMENT,
+    department_name VARCHAR(100) NOT NULL,
+    location VARCHAR(100)
+);
+CREATE TABLE employees(
+    employee_id INT PRIMARY KEY AUTO_INCREMENT,
+    employee_name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE,
+    salary DECIMAL(10,2),
+    department_id INT,
+    manager_id INT,
+    joining_date DATE,
+    FOREIGN KEY (department_id) REFERENCES departments(department_id),
+    FOREIGN KEY(manager_id) REFERENCES employees(employee_id)
+);
+CREATE TABLE projects(
+    project_id INT PRIMARY KEY AUTO_INCREMENT,
+    project_name VARCHAR(100) NOT NULL,
+    budget DECIMAL(12,2),
+    start_date DATE 
+);
+CREATE TABLE employee_projects(
+    employee_id INT,
+    project_id INT,
+    assigned DATE,
+    PRIMARY KEY(employee_id,project_id),
+    FOREIGN KEY (employee_id) REFERENCES employees(employee_id),
+    FOREIGN KEY (project_id) REFERENCES projects(project_id)
+);
+INSERT INTO departments(department_name,location)
+VALUES 
+('IT','Bangalore'),
+('HR','Hyderabad'),
+('Finance','Mumbai'),
+('Sales','Delhi');
+INSERT INTO employees(employee_name,email,salary,department_id,manager_id,joining_date)
+VALUES 
+('Rahul','rahul@gmail.com',75000,1,NULL,'2022-01-10'),
+('Priya', 'priya@gmail.com', 65000, 1, 1, '2023-03-15'),
+('Amit', 'amit@gmail.com', 55000, 2, NULL, '2021-07-20'),
+('Sneha', 'sneha@gmail.com', 60000, 2, 3, '2024-02-12'),
+('Arjun', 'arjun@gmail.com', 80000, 3, NULL, '2020-11-05'),
+('Kiran', 'kiran@gmail.com', 50000, 4, NULL, '2023-08-18'),
+('Neha', 'neha@gmail.com', 70000, 1, 1, '2024-01-25');
+INSERT INTO projects
+(project_name, budget, start_date)
+VALUES
+('E-Commerce Application', 500000, '2024-01-01'),
+('Banking Application', 800000, '2024-03-01'),
+('HR Management System', 300000, '2024-05-01');
+INSERT INTO employee_projects
+(employee_id, project_id, assigned_date)
+VALUES
+(1, 1, '2024-01-05'),
+(2, 1, '2024-01-10'),
+(7, 1, '2024-02-01'),
+(1, 2, '2024-03-05'),
+(5, 2, '2024-03-10'),
+(3, 3, '2024-05-05'),
+(4, 3, '2024-05-10');
