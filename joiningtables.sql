@@ -241,4 +241,28 @@ SELECT
 FROM employees e
 JOIN departments d
 ON e.department_id=d.department_id
-WHERE d.department_name='IT';
+
+CREATE VIEW high_salaryemployees AS 
+SELECT
+	e.employee_id,
+    e.employee_name,
+    e.salary,
+    d.department_name
+FROM employees e
+JOIN departments d
+ON e.department_id=d.department_id
+WHERE e.salary>60000; 
+
+CREATE VIEW high_salaryemployees AS 
+SELECT
+    e.employee_id,
+    e.employee_name,
+    e.salary,
+    d.department_name
+FROM employees e
+JOIN departments d
+ON e.department_id=d.department_id
+WHERE e.salary>60000; 
+
+
+SELECT * FROM high_salaryemployees;
