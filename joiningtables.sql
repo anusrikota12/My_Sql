@@ -139,3 +139,56 @@ ON e.employee_id=ep.employee_id
 JOIN projects p
 ON ep.project_id=p.project_id;
 
+
+SELECT e.employee_name,
+p.project_name
+FROM employees e
+JOIN employee_projects ep
+ON e.employee_id=ep.employee_id
+JOIN projects p
+ON ep.project_id=p.project_id
+WHERE project_name='E-Commerce Application';
+
+
+SELECT e.employee_name,
+p.project_name,
+ep.assigned_date
+FROM employees e
+JOIN employee_projects ep
+ON e.employee_id=ep.employee_id
+JOIN projects p
+ON ep.project_id=p.project_id
+WHERE project_name='Banking Application';
+
+
+Create view employee_department_view AS
+SELECT
+	e.employee_id,
+    e.employee_name,
+    e.salary,
+	d.department_name,
+    d.location
+FROM employees e
+JOIN departments d
+ON e.department_id = d.department_id;
+
+
+select * 
+from employee_department_view;
+
+CREATE VIEW high_salary_employees as
+select
+	employee_id,
+    employee_name,
+    salary
+from employees
+where salary>60000;
+
+SELECT UPPER(employee_name)
+FROM employees;
+
+SELECT LOWER(employee_name)
+FROM employees;
+
+SELECT employee_name, LENGTH(employee_name) AS name_length
+FROM employees;
